@@ -14,6 +14,21 @@
         <a class="nav-link" [routerLink]="['admin', 'dashboard']">Dashboard</a>
       </li>
 
+       <!-- Farmer only -->
+       <li class="nav-item" *ngIf="isFarmer">
+        <a class="nav-link" [routerLink]="['farmer', 'application']">Application</a>
+      </li>
+
+       <!-- Department only -->
+       <li class="nav-item" *ngIf="isDepartment">
+        <a class="nav-link" [routerLink]="['department', 'dashboard']">Dashboard</a>
+      </li>
+
+       <!-- Vendor only -->
+       <li class="nav-item" *ngIf="isVendor">
+        <a class="nav-link" [routerLink]="['vendor', 'orders']">Orders</a>
+      </li>
+
       <!-- Anonymous only -->
       <li class="nav-item" *ngIf="!isAuthorized">
         <a class="nav-link" [routerLink]="['login']">Login</a>
@@ -28,6 +43,9 @@
     <span class="navbar-text">
       <span class="badge badge-warning" *ngIf="isAuthorized">Authorized</span>
       <span class="badge badge-danger" *ngIf="isAdmin">Admin</span>
+      <span class="badge badge-primary" *ngIf="isFarmer">Farmer</span>
+      <span class="badge badge-success" *ngIf="isVendor">Vendor</span>
+      <span class="badge badge-dark" *ngIf="isDepartment">Department</span>
     </span>
 </header>
 
@@ -37,12 +55,3 @@
   </div>
 </div>
 
-<div class="text-center">
-  <p>
-    <a href="https://twitter.com/maximzhukov_dev" target="_blank">@maximzhukov_dev</a>, 2020
-  </p>
-
-  <p>
-    <a href="https://fsou1.github.io/Angular_8_role_based_authorization/" target="_top">Angular 8 - Role-based authorization with sample</a>
-  </p>
-</div>

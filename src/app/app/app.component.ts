@@ -24,6 +24,18 @@ export class AppComponent implements OnInit {
     return this.authService.hasRole(Role.Admin);
   }
 
+  get isFarmer() {
+    return this.authService.hasRole(Role.Farmer);
+  }
+
+  get isVendor() {
+    return this.authService.hasRole(Role.Vendor);
+  }
+
+  get isDepartment(){
+    return this.authService.hasRole(Role.Department)
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['login']);

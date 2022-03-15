@@ -42,6 +42,39 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
+    path: 'department',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        Role.Department,
+      ]
+    },
+    loadChildren: () => import('./department/department.module').then(m => m.DepartmentModule)
+  },
+  {
+    path: 'farmer',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        Role.Farmer,
+      ]
+    },
+    loadChildren: () => import('./farmer/farmer.module').then(m => m.FarmerModule)
+  },
+  {
+    path: 'vendor',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        Role.Vendor,
+      ]
+    },
+    loadChildren: () => import('./vendor/vendor.module').then(m => m.VendorModule)
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
